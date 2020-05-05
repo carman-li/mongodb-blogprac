@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4/stitch.js"></script>
+    <script>
+        // Initialize the App Client
+        const client = stitch.Stitch.initializeDefaultAppClient("blogpractice-ipdny");
+        // Get a MongoDB Service Client
+        const mongodb = client.getServiceClient(
+            stitch.RemoteMongoClient.factory,
+            "mongodb-atlas"
+        );
+        // Get a reference to the blog database
+        const db = mongodb.db("blog");
+    </script>
+    <script type="text/javascript" src="blog.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="blog.css">
+
+    <title>Blog App</title>
+</head>
+
+<body onload="displayCommentsOnLoad()">
+
+    <h2>I want to talk about the perfect chicken noodle soup.</h2>
+    <div id="content">
+        Chicken noodle soup is one of the top tier, classic soups, and it may seem like a simple soup. But to get it
+        perfect, there are a million and one factors that must be considered.
+    </div>
+    <hr>
+    Add comment:
+    <input id="new_comment"> <input type="submit" onClick="addComment()">
+    <h6>Comments</h6>
+    <div id="comments">
+    </div>
+
+</body>
+
+</html>
